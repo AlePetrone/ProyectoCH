@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SW Gestion </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <link rel="stylesheet" href="css/estilosDEF.css">
+    <script defer src="clases.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.29/dist/sweetalert2.all.min.js"></script>
+</head>
+<body data-theme="light">
+  <article class="container">
+      <h1>Ingreso de Stock </h1>
+      <div>
+          <input type="text" id="NombreIgreso" placeholder="Nombre a Ingresar" >
+          <input type="number" id="cantidadIngreso" placeholder="Cantidad" >
+          <input type="number" id="pesajeIngreso" placeholder="Pesaje">
+          <input type="number" id="costoIngreso" placeholder="costo">
+          <input type="number" id="PLUIngreso" placeholder="Código" >
+          <br><br>
+          <button class="button button-outline">cargar</button>
+      </div>
+      <hr>
+      <table>
+          <thead>
+              <tr>
+                  <th>Nombre</th>
+                  <th>Cantidad</th>
+                  <th>Pesaje</th>
+                  <th>costo</th>
+                  <th>PLU</th>
+              </tr>
+          </thead>
+          <tbody id="cuerpo">
+          </tbody>
+      </table>
+      <footer>
+          <button role="button" id = "guarda" class="primary">GUARDAR PRODUCTOS</button>
+          <button role="button2" id = "guardados" class="primary">VER PRODUCTOS GUARDADOS</button>
+          <button role="button3" id = "eliminar" class="primary">ELIMINAR</button>
+      </footer>
+  </article>
+</body>
+</html>
