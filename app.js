@@ -5,6 +5,7 @@ const inputCosto = document.querySelector("#costoIngreso")
 const inputPlu = document.querySelector("#PLUIngreso")
 const campos = document.querySelector("input")
 const btnCargar = document.querySelector("#cargar")
+const btnGuardar = document.querySelector("#guarda")
 const btnGuardados = document.querySelector("#guardados")
 const btnEliminar = document.querySelector("#eliminar")
 
@@ -23,7 +24,11 @@ const Resto = [{ nombre: "Banana",  cantidad: 12, kg: 19, costo: 1200, plu: 101 
             { nombre: "Anana",  cantidad: 1, kg: 7, costo: 1400, plu: 104 },
 ]
 const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
+const guardarLocal2  = (clave, valor) => { localStorage.setItem(clave, valor) };
 guardarLocal("RestoProductos", JSON.stringify(Resto));
+
+
+
 
 
 
@@ -99,4 +104,5 @@ class prodResto{
 const mostrarGuardados = JSON.parse(localStorage.getItem("RestoProductos"));
 const mostrarStock = JSON.parse(localStorage.getItem("stockDia"));
 btnCargar.addEventListener("click", () => {agregarProd(); cargarTabla(); console.log("Boton apretado")});
-btnGuardados.addEventListener("click",()=> {armarTable() ;guardarLocal("stockDia", JSON.stringify(Productos), console.log("Boton apretado"))} )
+btnGuardados.addEventListener("click",()=> {armarTable() ;console.log("Boton apretado")} )
+btnGuardar.addEventListener("click", () => {guardarLocal2("stockDia", JSON.stringify(Productos), console.log("Boton apretado"))})
