@@ -24,7 +24,6 @@ const Resto = [{ nombre: "Banana",  cantidad: 12, kg: 19, costo: 1200, plu: 101 
             { nombre: "Anana",  cantidad: 1, kg: 7, costo: 1400, plu: 104 },
 ]
 const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
-const guardarLocal2  = (clave, valor) => { localStorage.setItem(clave, valor) };
 guardarLocal("RestoProductos", JSON.stringify(Resto));
 
 
@@ -105,4 +104,30 @@ const mostrarGuardados = JSON.parse(localStorage.getItem("RestoProductos"));
 const mostrarStock = JSON.parse(localStorage.getItem("stockDia"));
 btnCargar.addEventListener("click", () => {agregarProd(); cargarTabla(); console.log("Boton apretado")});
 btnGuardados.addEventListener("click",()=> {armarTable() ;console.log("Boton apretado")} )
-btnGuardar.addEventListener("click", () => {guardarLocal2("stockDia", JSON.stringify(Productos), console.log("Boton apretado"))})
+btnGuardar.addEventListener("click", () => {Swal.fire({
+    title: '¿Desea agregar estos productos?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si, deseo guardarlo'
+  }).then((result) => {
+    if (result.isConfirmed) {
+        guardarLocal("stockDia", JSON.stringify(Productos));
+        console.log("Boton apretado");
+        Eliminar()
+      Swal.fire(
+        '¡Guardado!',
+        'Los productos han sido guardados correctamente.',
+        'success'
+      )
+    }
+  })})
+
+const Eliminar = () => {cuerpo.remove()}
+
+
+
+  
+  
+ 
