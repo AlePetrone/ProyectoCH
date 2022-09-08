@@ -8,8 +8,10 @@ const btnCargar = document.querySelector("#cargar")
 const btnGuardar = document.querySelector("#guarda")
 const btnGuardados = document.querySelector("#guardados")
 const btnEliminar = document.querySelector("#eliminar")
-
+const Resto = "https://631a4493dc236c0b1edb07ed.mockapi.io/productos"
 const Productos = []
+
+
 const Codigos = [{ nombre: "Banana", plu: 101 },
 { nombre: "Pera", plu: 102 }, //base de codigos
 { nombre: "Anana", plu: 103 },
@@ -18,13 +20,9 @@ const Codigos = [{ nombre: "Banana", plu: 101 },
 
 
 
-const Resto = [{ nombre: "Banana",  cantidad: 12, kg: 19, costo: 1200, plu: 101 }, //simula datos de un stock previo 
-            { nombre: "Pera",  cantidad: 10, kg: 14, costo: 2200, plu: 102 },
-            { nombre: "Manzana",  cantidad: 2, kg: 18, costo: 700, plu: 103 },
-            { nombre: "Anana",  cantidad: 1, kg: 7, costo: 1400, plu: 104 },
-]
+
 const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
-guardarLocal("RestoProductos", JSON.stringify(Resto));
+
 
 
 
@@ -95,13 +93,15 @@ class prodResto{
 }
 
 
-
-
+const peticionFetch = async ()=> {
+    const response = await fetch(URL)
+    const data = await response.json()
+          return data }
 
 
 
 const mostrarGuardados = JSON.parse(localStorage.getItem("RestoProductos"));
-const mostrarStock = JSON.parse(localStorage.getItem("stockDia"));
+const mostrarStock = JSON.parse(peticionFetch);
 btnCargar.addEventListener("click", () => {agregarProd(); cargarTabla(); console.log("Boton apretado")});
 btnGuardados.addEventListener("click",()=> {armarTable() ;console.log("Boton apretado")} )
 btnGuardar.addEventListener("click", () => {Swal.fire({
