@@ -8,7 +8,7 @@ const btnCargar = document.querySelector("#cargar")
 const btnGuardar = document.querySelector("#guarda")
 const btnGuardados = document.querySelector("#guardados")
 const btnEliminar = document.querySelector("#eliminar")
-const Resto = "https://631a4493dc236c0b1edb07ed.mockapi.io/productos"
+const URL = "https://6324890ebb2321cba92ec671.mockapi.io/Stock/resto"
 const Productos = []
 
 
@@ -92,16 +92,27 @@ class prodResto{
     }
 }
 
-
+/*
 const peticionFetch = async ()=> {
+            const response = await fetch(URL)
+            const data = await response.json()
+                return data 
+        
+}
+*/
+const obtenerCursos = async ()=> {
     const response = await fetch(URL)
-    const data = await response.json()
-          return data }
+                      response.status >= 400
+                      ? data = dataError
+                      : data = response.json()
+                      return data
+}
+
 
 
 
 const mostrarGuardados = JSON.parse(localStorage.getItem("RestoProductos"));
-const mostrarStock = JSON.parse(peticionFetch);
+const mostrarStock = () => {obtenerCursos()};
 btnCargar.addEventListener("click", () => {agregarProd(); cargarTabla(); console.log("Boton apretado")});
 btnGuardados.addEventListener("click",()=> {armarTable() ;console.log("Boton apretado")} )
 btnGuardar.addEventListener("click", () => {Swal.fire({
